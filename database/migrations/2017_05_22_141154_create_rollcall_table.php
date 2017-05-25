@@ -16,8 +16,6 @@ class CreateRollcallTable extends Migration
         Schema::create('roll_calls', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->boolean('present');
-            $table->string('token');
             $table->timestamps();
         });
     }

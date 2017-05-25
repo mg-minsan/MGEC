@@ -6,4 +6,31 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+ .dropdown{
+ 	width: 100%;
+ 	z-index: 1986;
+ 	overflow: auto;
+ 	overflow-x: hidden
+ }
+.dropdown .panel-block:hover{
+	background-color: #f7efef;
+} 
+// .dropdown {
+//     position: relative;
+//     display: inline-block;
+// }
+
+// .dropdown-content {
+//     position: absolute;
+//     background-color: #f9f9f9;
+//     min-width: 160px;
+//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//     padding: 12px 16px;
+//     z-index: 1;
+// }
+
+// .dropdown:hover .dropdown-content {
+//     display: block;
+// }

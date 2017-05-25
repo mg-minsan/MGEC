@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Attendance;
+
+use Illuminate\Database\Eloquent\Model;
+
+class RollCall extends Model
+{
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    protected $fillable = ['date', 'trip_id']; 
+
+    public function attendances()
+    {
+        return $this->belongsToManay('App\Attendance\Attendance');
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function  trip()
+    {
+        return $this->belongsTo('App\Attendance\Trip');
+    }
+    
+    
+}

@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 
         factory(App\User::class, 10)->create();
-        factory(App\Attendance::class, 10)->create();
-        factory(App\Trip::class, 10)->create();
-        factory(App\RollCall::class, 10)->create();
+        factory(App\Attendance\Attendance::class, 10)->create();
+        factory(App\Attendance\Trip::class, 10)->create();
+        factory(App\Attendance\RollCall::class, 10)->create();
     }
 }

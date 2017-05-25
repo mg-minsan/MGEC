@@ -23,23 +23,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Attendance::class, function (Faker\Generator $faker) {
+$factory->define(App\Attendance\Attendance::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
     ];
 });
 
-$factory->define(App\RollCall::class, function (Faker\Generator $faker) {
+$factory->define(App\Attendance\RollCall::class, function (Faker\Generator $faker) {
     return [
         'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'present' => $faker->boolean,
         'trip_id' => $faker->numberBetween($min = 1, $max = 10),
-        'token' => "",
-        'attendance_id' => $faker->numberBetween($min = 1, $max = 10)
     ];
 });
 
-$factory->define(App\Trip::class, function (Faker\Generator $faker) {
+$factory->define(App\Attendance\Trip::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'duration' => $faker->randomDigitNotNull

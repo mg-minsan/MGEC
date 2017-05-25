@@ -16,6 +16,7 @@ class CreateTripTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->boolean('active')->default(false);
             $table->integer('duration');
             $table->timestamps();
         });
