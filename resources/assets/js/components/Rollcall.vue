@@ -35,9 +35,10 @@
          <ul class="collection" v-if="attendances.length > 0">
           <li class="collection-item" 
           v-for="attendance in attendances">
-          <div>{{ attendance.name }}<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div></li>
+          <div>{{ attendance.name }}<a href="#!" class="secondary-content" @click.stop="deleteAttendance(attendance)"><i class="material-icons">delete</i></a></div></li>
        </ul>
-
+       <br/>
+          <a :href="rollCallPath"  v-if="attendances.length > 0" class="btn waves-effect waves-light"> Finish </a>
     </div>
 
 </div>
@@ -57,7 +58,8 @@
                 name: "",
                 result: "",
                 date: moment().format('YYYY-MM-DD'),
-                rollcall: "",
+                rollCall: "",
+                rollCallPath: "/rollcall/" + moment().format('YYYY-MM-DD') + "/attendances",
                 attendances: []
              }
           },
@@ -69,12 +71,24 @@
                   let vm = this
                   axios.put(url, {date: vm.date, trip: vm.trip})
    					.then(function(response){
-                                          console.log(response.data)
                      vm.attendances.push(response.data)
+                     vm.rollCall = response.data.rollCall;
    					})
                   this.name = ""
                   $('.input-field .input').focus()
    				},
+               deleteAttendance: function(attendance){
+                  let url = "/api/attendances/" + attendance.id + "/absent"
+                  let vm = this
+                  axios.put(url, {date: this.date })
+                  .then(function(response){
+                    vm.attendances =  vm.attendances.filter(function(att){
+                        return att.id !== attendance.id
+                     })
+                     console.log(vm.attendances)
+                     // console.log(vm.attendances)
+                  })
+               },
   				selected: function(name){
                   this.result = ""
                   this.name = name

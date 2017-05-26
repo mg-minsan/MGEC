@@ -26,9 +26,24 @@ class RollCallController extends Controller
             ]);
         $user = $this->attendance->firstOrCreate(['name' => $name]);
         $user->rollCalls()->sync([$rollcall->id => ['present' => true]]);
+        $user =  $user->toArray();
+        $user['rollCall'] = $rollcall->id; 
 		return response()->json($user, 200);
 	}
 
+    public function absent(Request $request, $id)
+    {
+        $rollcall = $this->rollCall->where('date', $request->input('date'))->first();
+        $user = $this->attendance->find($id);
+        return $user->rollCalls()->detach($rollcall->id);
+        return response()->json($user, 200);
+    }
+
+    public function dateAttendances(Request $request, $date)
+    {
+        $rollcall = $this->rollCall->where('date', $date)->with('attendances')->first();
+        return view('rollCall.dateAttendances', ['rollCall' => $rollcall]);
+    }
 
     public function activeTrips(Request $request)
     {

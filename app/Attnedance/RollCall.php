@@ -11,11 +11,11 @@ class RollCall extends Model
      *
      * @return void
      */
-    protected $fillable = ['date', 'trip_id']; 
+    protected $fillable = ['date', 'trip_i  d']; 
 
     public function attendances()
     {
-        return $this->belongsToManay('App\Attendance\Attendance');
+        return $this->belongsToMany('App\Attendance\Attendance');
     }
 
     /**
