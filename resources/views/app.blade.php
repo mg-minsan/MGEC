@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
-        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
   </head>
     <body>
@@ -17,7 +17,7 @@
         @yield('content')
         </div>
    </body>
-   <script src="{{secure_asset('js/app.js')}}"></script>
+   <script src="{{ assets('js/app.js') }}"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
    <script>
      
