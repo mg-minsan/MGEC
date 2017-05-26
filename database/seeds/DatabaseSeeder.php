@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         DB::table('trips')->insert([
             'name' => 'Shan Yoma 2017',
             'duration' => '22',
+            'active' => true,
             'created_at' => date('Y-m-d h:i:s', time()),
             'updated_at' => date('Y-m-d  h:i:s', time()),
 
