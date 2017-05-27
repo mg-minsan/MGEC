@@ -11,7 +11,7 @@ class RollCall extends Model
      *
      * @return void
      */
-    protected $fillable = ['date', 'trip_i  d']; 
+    protected $fillable = ['date', 'trip_id']; 
 
     public function attendances()
     {

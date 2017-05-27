@@ -19,16 +19,16 @@ class RollCallController extends Controller
         $this->trip = $trip;
     }
 	public function present(Request $request, $name)
-	{
-        $rollcall = $this->rollCall->firstOrCreate([
-            'date' => $request->input('date'), 
-            'trip_id' => $request->input('trip')
-            ]);
+        {
+        $rollcall = $this->rollCall->firstOrCreate(
+            ['date' => $request->input('date')],
+            ['trip_id' => $request->input('trip')]
+            );
         $user = $this->attendance->firstOrCreate(['name' => $name]);
         $user->rollCalls()->sync([$rollcall->id => ['present' => true]]);
         $user =  $user->toArray();
         $user['rollCall'] = $rollcall->id; 
-		return response()->json($user, 200);
+        return response()->json($user, 200);
 	}
 
     public function absent(Request $request, $id)
